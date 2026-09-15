@@ -1,25 +1,21 @@
 #include "DS.h"
+
 /*
-  p-ийн зааж буй Stack-т x утгыг оруулна
+ * Тайлбар: доорх функцүүд нь Stack бүтцийн p->s_arr[] хүснэгт болон
+ * p->s_len хувьсагчтай харьцана. Хэрэв танай DS.h файлд MAX_SIZE-ын
+ * оронд өөр нэртэй тогтмол (жишээ нь SIZE, MAX_LEN гэх мэт) ашигласан
+ * бол доорх кодыг тэдгээр нэрээр солино уу.
  */
-void s_push(Stack *p, int x)
-{
-        p->s_arr[0] = x; // p->stack.a[0] = x;
-        p->s_len = 1;    // p->stack.len = 1;
-}
-/*
-  p-ийн зааж буй Stack-аас гарах функц
- */
-void s_pop(Stack *p)
-{
-        
+
+// Төгсгөлд нь оруулах үйлдэл. p-ийн зааж буй Stack-т x утгыг оруулна.
+void s_push(Stack *p, int x) {
+    p->s_arr[p->s_len] = x;
+    p->s_len++;
 }
 
-void s_print(Stack *p)
-{
-        int i;
-        for (i = 0; i < p->s_len; i++) {
-                printf("%d ", p->s_arr[i]);
-        }
-        printf("\n");
+// Төгсгөлөөс нь гаргах үйлдэл. p-ийн зааж буй Stack-аас гарах функц.
+void s_pop(Stack *p) {
+    if (p->s_len > 0) {
+        p->s_len--;
+    }
 }
